@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage{natbib} % Required to change bibliography style to APA
+\usepackage{amsmath} % Required for some math elements 
+\usepackage{bm}
+\usepackage{amssymb}
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+\usepackage{times} % Uncomment to use the Times New Roman font
+\usepackage{verbatim}
+\usepackage{tabulary}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{NYU-MMVC-LAB Weekly Report} % Title
+
+\author{\textsc{Cheng Qian}} % Author name
+
+\date{\today} % Date for the report
+%\date{September 13, 2015}
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+
+
+% If you wish to include an abstract, uncomment the lines below
+% \begin{abstract}
+% Abstract text
+% \end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Motivation}
+
+This week we've been fully focusing on the ongoing project with Prof. Rizzo, in hope of working out a few papers for the upcoming ACVR workshop. The goals include:
+\begin{enumerate}
+	\item Current demo run on TX2 for speed comparison
+	\item Signal/Traffic light detection with Deep learning method/CV feature extraction
+	\item Door/Doorknob recognition, joy stick control/orientation
+	\item Zebra strip detection, intersection walking and orientation ("you are 5 feet away from xxx/off center"), plus angle information
+\end{enumerate}
+
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2
+%----------------------------------------------------------------------------------------
+
+\section{Methods}
+\subsection{Jetson TX2}
+At first we were having some displaying issue as the screen was filled with sparkles. Then after several attempts Liang has found out that there's only one computer in the lab can run the demo on TX2 without any display issue, and he has reinstalled the system with all necessary working environment such as CUDA and OpenCV etc. I think we can show the progress on this Thursday.
+
+\subsection{Doorknob detection}
+We want to try two different methods for training if time permits:
+
+\begin{enumerate}
+	\item Retrain the YOLO network by tuning its parameters and feeding it with manually collected photo data (this will be done by the volunteer with Prof. Rizzo), and we'll write a Python program to store the information of bounding boxes in each photo for further training/testing
+	\item Build a doorknob classifer and integrate this classifier into a single neural network model for better computation efficiency (inspired by the YOLOv2), although at this moment we're not sure how long this would take and we're a little concerned with the potential sacrifice in accuracy in exchange for speed
+\end{enumerate}
+
+
+\subsection{Traffic light and Zebra strips}
+We believe that all these object detection process can share the similar, if not the same, procedure and we want to start with doorknob to see how it goes. If the experiment results prove to be promising then we'll generalize the model and expand it for all three objects. At this writing the data is being collected, and we find the rest is relatively easy to accomplish once object detection is done.\\
+By "rest" I mean:
+\begin{enumerate}
+	\item intersection walking
+	\item alert the user with angle/signal information
+	\item simple orientation with audio output
+\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 3
+%----------------------------------------------------------------------------------------
+
+%\section{Reading}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+\end{document}

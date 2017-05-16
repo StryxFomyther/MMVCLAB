@@ -1,3 +1,0 @@
-person,234
-trash can,123
-chair,312
